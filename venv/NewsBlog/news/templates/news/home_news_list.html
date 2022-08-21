@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{%block content%}
+    {% for item in news %}
+    <div class="card mb-3" >
+      <div class="card-header text-left" >
+        <h4>{{item.title}}</h4>
+      </div>
+      <div class="card-body text-center" >
+        <div class = "media">
+          {% if item.photo %}
+          <img src="{{item.photo.url}}" alt="Тут должна быть картинка" width="350" class = "mr-3" align="left">
+          {%else%}
+          <img src="https://picsum.photos/id/1001/350/250/?blur=2" alt="Тут должна быть картинка" class = 'img-thumbnail mr-3' align="left" >
+          {%endif%}
+          <div class = "media-body" >
+          </div><h6 class="card-title">{{item.preview}}</h6>
+          <a href="{{item.get_absolute_url}}" class="btn btn-primary ">Продолжение тут...</a>
+        </div>
+      </div>
+      <div  class="card-footer" >
+        {% if item.author %}
+        <a href="{% url 'view_user' item.author_id%}" class="link" >{{ item.author }}</a>
+        {% endif %}
+      </div>
+    </div>
+    {%endfor%}
+{%endblock%}

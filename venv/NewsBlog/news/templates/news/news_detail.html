@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+
+{% block title %}
+{{ news_item.title}}:{{block.super}}
+{%endblock%}
+
+{%block content%}
+<div class="card mb-3" >
+  <div class="row g-0">
+    <h5 class="card-header">{{news_item.title}}</h5>
+    <div class="col-md-4 mt-3">
+    {% if news_item.photo %}
+    <img src="{{news_item.photo.url}}" class="img-thumbnail mt-2 mb-2"  alt="" >
+    {%else%}
+    <img src="https://picsum.photos/id/1001/350/250/?blur=2" class="img-thumbnail mt-2 mb-2" alt="Тут должна быть картинка">
+    {% endif %}
+    </div>
+    <div class='col-md-8'>
+      <div class = 'card-body'>
+      <p class = "card-text"  >{{news_item.content}}</p>
+        {% if news_item.link %}
+        {% if news_item.author %}
+      <a href={{news_item.link}} class="btn btn-primary" type="submit" >Оригинал статьи</a> | <a href="{% url 'view_user' news_item.author_id%}" class="btn btn-primary" type="submit" >Автор: {{ news_item.author }}</a>
+        {% endif %}
+        {% endif %}
+      </div>
+    </div>
+    </div>
+</div>
+{%endblock%}

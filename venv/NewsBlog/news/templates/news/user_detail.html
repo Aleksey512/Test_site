@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+
+{% block title %}
+{{ user_item.username}}:{{block.super}}
+{%endblock%}
+
+{%block content%}
+<div class="container">
+<div id="main">
+
+
+ <div class="row" id="real-estates-detail">
+  <div class="col-lg-4 col-md-4 col-xs-12">
+   <div class="panel panel-default">
+    <div class="panel-heading">
+     <header class="panel-title">
+      <div class="text-center">
+       <strong>Пользователь сайта</strong>
+      </div>
+     </header>
+    </div>
+    <div class="panel-body">
+     <div class="text-center" id="author">
+      <img src="https://bootstraptema.ru/snippets/element/2016/profilesection/myprofile.jpg">
+      <h3>{{ user_item.username }}</h3>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="col-lg-8 col-md-8 col-xs-12">
+   <div class="panel">
+    <div class="panel-body">
+     <h3 class = "card-text">О ползователе</h3>
+     <ul class="list-group">
+      <li class="list-group-item">Имя: {{ user_item.first_name }}</li>
+      <li class="list-group-item">Фамилия: {{ user_item.last_name }}</li>
+      <li class="list-group-item">E-mail: {{ user_item.email }}</li>
+      <li class="list-group-item">Дата создания: {{ user_item.date_joined }}</li>
+      <li class="list-group-item">Последняя активность: {{ user_item.last_login }}</li>
+     </ul>
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+   {%endblock%}
+
